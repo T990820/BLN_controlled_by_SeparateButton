@@ -1,0 +1,40 @@
+#include<regx52.h>
+#include"delay.h"
+#include"lcd1602.h"
+#include"timer0.h"
+void main()
+{
+	LCD_Init();
+	P0=0xff;
+	while(P0==0xff);
+	if(P0!=0xff)
+	{
+		delay10ms();
+		if(P0!=0xff)
+		{
+			delay1s();
+			if(P0!=0xff)
+			{
+				while(P0!=0xff);
+				while(P0==0xff)
+				{
+					P3_0=0;
+					delay9ms();
+					P3_0=1;
+					delay1ms();
+				}
+			}
+			else
+			{
+				while(P0!=0xff);
+				while(P0==0xff)
+				{
+					P3_0=0;
+					delay1ms();
+					P3_0=1;
+					delay9ms();
+				}
+			}
+		}
+	}
+}
